@@ -1,6 +1,8 @@
 #include "ads1256.h"
 #include "spi.h"
 #include "stm32f407xx.h"
+#include "stm32f4xx_hal.h"
+#include "stm32f4xx_hal_dma.h"
 #include "stm32f4xx_hal_gpio.h"
 #include "stm32f4xx_hal_spi.h"
 #include <stdint.h>
@@ -59,6 +61,7 @@ void ADS1256WREG(uint8_t regaddr,uint8_t databyte)
 void ADS1256_Init(void)
 {
 	CS_1();
+	HAL_Delay(10);
 	//*************自校准****************
   while(ADS1256_DRDY);
 	CS_0();

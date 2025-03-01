@@ -19,6 +19,7 @@
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
 #include "spi.h"
+#include "stm32f407xx.h"
 #include "stm32f4xx_hal.h"
 #include "stm32f4xx_hal_cortex.h"
 #include "stm32f4xx_hal_def.h"
@@ -99,7 +100,7 @@ int main(void)
   MX_SPI1_Init();
   MX_USART1_UART_Init();
   /* USER CODE BEGIN 2 */
-  // ADS1256_Init();
+  ADS1256_Init();
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -109,9 +110,10 @@ int main(void)
   float Volts;
   while (1) {
     HAL_Delay(1000);
-    // Adc = ADS1256ReadData((0 << 4) | ADS1256_MUXN_AINCOM);
+    Adc = ADS1256ReadData((ADS1256_MUXN_AIN0 << 4) | ADS1256_MUXN_AINCOM);
   	Volts = Adc*0.000000598;
-    printf("ADC: %.4f", Volts);
+    printf("ADC: %d\r\n", Adc);
+    printf("Test\r\n");
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
