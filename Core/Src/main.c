@@ -19,11 +19,6 @@
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
 #include "spi.h"
-#include "stm32f407xx.h"
-#include "stm32f4xx_hal.h"
-#include "stm32f4xx_hal_cortex.h"
-#include "stm32f4xx_hal_def.h"
-#include "stm32f4xx_hal_dma_ex.h"
 #include "usart.h"
 #include "gpio.h"
 
@@ -75,6 +70,7 @@ int _write(int file, char *ptr, int len) {
   */
 int main(void)
 {
+
   /* USER CODE BEGIN 1 */
 
   /* USER CODE END 1 */
