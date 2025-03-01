@@ -1,9 +1,9 @@
 #ifndef __ADS1256_H__
 #define __ADS1256_H__
 
+#include <stdint.h>
 
 // define commands 
-#include <stdint.h>
 #define ADS1256_CMD_WAKEUP   0x00 
 #define ADS1256_CMD_RDATA    0x01 
 #define ADS1256_CMD_RDATAC   0x03 
@@ -84,7 +84,8 @@
 #define ADS1256_DRATE_2_5SPS    0x03
 
 
-int32_t ADS1256ReadData(uint8_t channel);
-void ADS1256_Init(void);
+void ADS1256_Init();
+uint8_t ADS1256_ReadChipID(void);
+int32_t ADS1256_GetAdc(void);
 
 #endif
