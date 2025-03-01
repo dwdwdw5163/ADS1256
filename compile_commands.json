@@ -1,6 +1,6 @@
 [
  {
-  "directory": "/Users/zhang/Projects/ADS1256",
+  "directory": "/home/xinjie/Project/ADS1256",
   "arguments": [
    "arm-none-eabi-gcc",
    "-c",
@@ -18,6 +18,7 @@
    "-IModule",
    "-I/Applications/ArmGNUToolchain/13.3.Rel1/arm-none-eabi/arm-none-eabi/include",
    "-I/usr/arm-none-eabi/include",
+   "-I/usr/lib/arm-none-eabi/include/",
    "-Og",
    "-Wall",
    "-fdata-sections",
@@ -35,7 +36,7 @@
   "file": "Core/Src/main.c"
  },
  {
-  "directory": "/Users/zhang/Projects/ADS1256",
+  "directory": "/home/xinjie/Project/ADS1256",
   "arguments": [
    "arm-none-eabi-gcc",
    "-c",
@@ -53,6 +54,7 @@
    "-IModule",
    "-I/Applications/ArmGNUToolchain/13.3.Rel1/arm-none-eabi/arm-none-eabi/include",
    "-I/usr/arm-none-eabi/include",
+   "-I/usr/lib/arm-none-eabi/include/",
    "-Og",
    "-Wall",
    "-fdata-sections",
@@ -70,7 +72,7 @@
   "file": "Core/Src/gpio.c"
  },
  {
-  "directory": "/Users/zhang/Projects/ADS1256",
+  "directory": "/home/xinjie/Project/ADS1256",
   "arguments": [
    "arm-none-eabi-gcc",
    "-c",
@@ -88,6 +90,7 @@
    "-IModule",
    "-I/Applications/ArmGNUToolchain/13.3.Rel1/arm-none-eabi/arm-none-eabi/include",
    "-I/usr/arm-none-eabi/include",
+   "-I/usr/lib/arm-none-eabi/include/",
    "-Og",
    "-Wall",
    "-fdata-sections",
@@ -105,7 +108,7 @@
   "file": "Core/Src/spi.c"
  },
  {
-  "directory": "/Users/zhang/Projects/ADS1256",
+  "directory": "/home/xinjie/Project/ADS1256",
   "arguments": [
    "arm-none-eabi-gcc",
    "-c",
@@ -123,6 +126,7 @@
    "-IModule",
    "-I/Applications/ArmGNUToolchain/13.3.Rel1/arm-none-eabi/arm-none-eabi/include",
    "-I/usr/arm-none-eabi/include",
+   "-I/usr/lib/arm-none-eabi/include/",
    "-Og",
    "-Wall",
    "-fdata-sections",
@@ -140,7 +144,7 @@
   "file": "Core/Src/usart.c"
  },
  {
-  "directory": "/Users/zhang/Projects/ADS1256",
+  "directory": "/home/xinjie/Project/ADS1256",
   "arguments": [
    "arm-none-eabi-gcc",
    "-c",
@@ -158,6 +162,7 @@
    "-IModule",
    "-I/Applications/ArmGNUToolchain/13.3.Rel1/arm-none-eabi/arm-none-eabi/include",
    "-I/usr/arm-none-eabi/include",
+   "-I/usr/lib/arm-none-eabi/include/",
    "-Og",
    "-Wall",
    "-fdata-sections",
@@ -175,7 +180,7 @@
   "file": "Core/Src/stm32f4xx_it.c"
  },
  {
-  "directory": "/Users/zhang/Projects/ADS1256",
+  "directory": "/home/xinjie/Project/ADS1256",
   "arguments": [
    "arm-none-eabi-gcc",
    "-c",
@@ -193,6 +198,7 @@
    "-IModule",
    "-I/Applications/ArmGNUToolchain/13.3.Rel1/arm-none-eabi/arm-none-eabi/include",
    "-I/usr/arm-none-eabi/include",
+   "-I/usr/lib/arm-none-eabi/include/",
    "-Og",
    "-Wall",
    "-fdata-sections",
@@ -210,7 +216,7 @@
   "file": "Core/Src/stm32f4xx_hal_msp.c"
  },
  {
-  "directory": "/Users/zhang/Projects/ADS1256",
+  "directory": "/home/xinjie/Project/ADS1256",
   "arguments": [
    "arm-none-eabi-gcc",
    "-c",
@@ -228,6 +234,7 @@
    "-IModule",
    "-I/Applications/ArmGNUToolchain/13.3.Rel1/arm-none-eabi/arm-none-eabi/include",
    "-I/usr/arm-none-eabi/include",
+   "-I/usr/lib/arm-none-eabi/include/",
    "-Og",
    "-Wall",
    "-fdata-sections",
@@ -245,7 +252,7 @@
   "file": "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c"
  },
  {
-  "directory": "/Users/zhang/Projects/ADS1256",
+  "directory": "/home/xinjie/Project/ADS1256",
   "arguments": [
    "arm-none-eabi-gcc",
    "-c",
@@ -263,6 +270,7 @@
    "-IModule",
    "-I/Applications/ArmGNUToolchain/13.3.Rel1/arm-none-eabi/arm-none-eabi/include",
    "-I/usr/arm-none-eabi/include",
+   "-I/usr/lib/arm-none-eabi/include/",
    "-Og",
    "-Wall",
    "-fdata-sections",
@@ -280,7 +288,7 @@
   "file": "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.c"
  },
  {
-  "directory": "/Users/zhang/Projects/ADS1256",
+  "directory": "/home/xinjie/Project/ADS1256",
   "arguments": [
    "arm-none-eabi-gcc",
    "-c",
@@ -298,6 +306,7 @@
    "-IModule",
    "-I/Applications/ArmGNUToolchain/13.3.Rel1/arm-none-eabi/arm-none-eabi/include",
    "-I/usr/arm-none-eabi/include",
+   "-I/usr/lib/arm-none-eabi/include/",
    "-Og",
    "-Wall",
    "-fdata-sections",
@@ -315,7 +324,7 @@
   "file": "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c"
  },
  {
-  "directory": "/Users/zhang/Projects/ADS1256",
+  "directory": "/home/xinjie/Project/ADS1256",
   "arguments": [
    "arm-none-eabi-gcc",
    "-c",
@@ -333,6 +342,7 @@
    "-IModule",
    "-I/Applications/ArmGNUToolchain/13.3.Rel1/arm-none-eabi/arm-none-eabi/include",
    "-I/usr/arm-none-eabi/include",
+   "-I/usr/lib/arm-none-eabi/include/",
    "-Og",
    "-Wall",
    "-fdata-sections",
@@ -350,7 +360,7 @@
   "file": "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash.c"
  },
  {
-  "directory": "/Users/zhang/Projects/ADS1256",
+  "directory": "/home/xinjie/Project/ADS1256",
   "arguments": [
    "arm-none-eabi-gcc",
    "-c",
@@ -368,6 +378,7 @@
    "-IModule",
    "-I/Applications/ArmGNUToolchain/13.3.Rel1/arm-none-eabi/arm-none-eabi/include",
    "-I/usr/arm-none-eabi/include",
+   "-I/usr/lib/arm-none-eabi/include/",
    "-Og",
    "-Wall",
    "-fdata-sections",
@@ -385,7 +396,7 @@
   "file": "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.c"
  },
  {
-  "directory": "/Users/zhang/Projects/ADS1256",
+  "directory": "/home/xinjie/Project/ADS1256",
   "arguments": [
    "arm-none-eabi-gcc",
    "-c",
@@ -403,6 +414,7 @@
    "-IModule",
    "-I/Applications/ArmGNUToolchain/13.3.Rel1/arm-none-eabi/arm-none-eabi/include",
    "-I/usr/arm-none-eabi/include",
+   "-I/usr/lib/arm-none-eabi/include/",
    "-Og",
    "-Wall",
    "-fdata-sections",
@@ -420,7 +432,7 @@
   "file": "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ramfunc.c"
  },
  {
-  "directory": "/Users/zhang/Projects/ADS1256",
+  "directory": "/home/xinjie/Project/ADS1256",
   "arguments": [
    "arm-none-eabi-gcc",
    "-c",
@@ -438,6 +450,7 @@
    "-IModule",
    "-I/Applications/ArmGNUToolchain/13.3.Rel1/arm-none-eabi/arm-none-eabi/include",
    "-I/usr/arm-none-eabi/include",
+   "-I/usr/lib/arm-none-eabi/include/",
    "-Og",
    "-Wall",
    "-fdata-sections",
@@ -455,7 +468,7 @@
   "file": "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.c"
  },
  {
-  "directory": "/Users/zhang/Projects/ADS1256",
+  "directory": "/home/xinjie/Project/ADS1256",
   "arguments": [
    "arm-none-eabi-gcc",
    "-c",
@@ -473,6 +486,7 @@
    "-IModule",
    "-I/Applications/ArmGNUToolchain/13.3.Rel1/arm-none-eabi/arm-none-eabi/include",
    "-I/usr/arm-none-eabi/include",
+   "-I/usr/lib/arm-none-eabi/include/",
    "-Og",
    "-Wall",
    "-fdata-sections",
@@ -490,7 +504,7 @@
   "file": "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.c"
  },
  {
-  "directory": "/Users/zhang/Projects/ADS1256",
+  "directory": "/home/xinjie/Project/ADS1256",
   "arguments": [
    "arm-none-eabi-gcc",
    "-c",
@@ -508,6 +522,7 @@
    "-IModule",
    "-I/Applications/ArmGNUToolchain/13.3.Rel1/arm-none-eabi/arm-none-eabi/include",
    "-I/usr/arm-none-eabi/include",
+   "-I/usr/lib/arm-none-eabi/include/",
    "-Og",
    "-Wall",
    "-fdata-sections",
@@ -525,7 +540,7 @@
   "file": "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.c"
  },
  {
-  "directory": "/Users/zhang/Projects/ADS1256",
+  "directory": "/home/xinjie/Project/ADS1256",
   "arguments": [
    "arm-none-eabi-gcc",
    "-c",
@@ -543,6 +558,7 @@
    "-IModule",
    "-I/Applications/ArmGNUToolchain/13.3.Rel1/arm-none-eabi/arm-none-eabi/include",
    "-I/usr/arm-none-eabi/include",
+   "-I/usr/lib/arm-none-eabi/include/",
    "-Og",
    "-Wall",
    "-fdata-sections",
@@ -560,7 +576,7 @@
   "file": "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c"
  },
  {
-  "directory": "/Users/zhang/Projects/ADS1256",
+  "directory": "/home/xinjie/Project/ADS1256",
   "arguments": [
    "arm-none-eabi-gcc",
    "-c",
@@ -578,6 +594,7 @@
    "-IModule",
    "-I/Applications/ArmGNUToolchain/13.3.Rel1/arm-none-eabi/arm-none-eabi/include",
    "-I/usr/arm-none-eabi/include",
+   "-I/usr/lib/arm-none-eabi/include/",
    "-Og",
    "-Wall",
    "-fdata-sections",
@@ -595,7 +612,7 @@
   "file": "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c"
  },
  {
-  "directory": "/Users/zhang/Projects/ADS1256",
+  "directory": "/home/xinjie/Project/ADS1256",
   "arguments": [
    "arm-none-eabi-gcc",
    "-c",
@@ -613,6 +630,7 @@
    "-IModule",
    "-I/Applications/ArmGNUToolchain/13.3.Rel1/arm-none-eabi/arm-none-eabi/include",
    "-I/usr/arm-none-eabi/include",
+   "-I/usr/lib/arm-none-eabi/include/",
    "-Og",
    "-Wall",
    "-fdata-sections",
@@ -630,7 +648,7 @@
   "file": "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.c"
  },
  {
-  "directory": "/Users/zhang/Projects/ADS1256",
+  "directory": "/home/xinjie/Project/ADS1256",
   "arguments": [
    "arm-none-eabi-gcc",
    "-c",
@@ -648,6 +666,7 @@
    "-IModule",
    "-I/Applications/ArmGNUToolchain/13.3.Rel1/arm-none-eabi/arm-none-eabi/include",
    "-I/usr/arm-none-eabi/include",
+   "-I/usr/lib/arm-none-eabi/include/",
    "-Og",
    "-Wall",
    "-fdata-sections",
@@ -665,7 +684,7 @@
   "file": "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.c"
  },
  {
-  "directory": "/Users/zhang/Projects/ADS1256",
+  "directory": "/home/xinjie/Project/ADS1256",
   "arguments": [
    "arm-none-eabi-gcc",
    "-c",
@@ -683,6 +702,7 @@
    "-IModule",
    "-I/Applications/ArmGNUToolchain/13.3.Rel1/arm-none-eabi/arm-none-eabi/include",
    "-I/usr/arm-none-eabi/include",
+   "-I/usr/lib/arm-none-eabi/include/",
    "-Og",
    "-Wall",
    "-fdata-sections",
@@ -700,7 +720,7 @@
   "file": "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_exti.c"
  },
  {
-  "directory": "/Users/zhang/Projects/ADS1256",
+  "directory": "/home/xinjie/Project/ADS1256",
   "arguments": [
    "arm-none-eabi-gcc",
    "-c",
@@ -718,6 +738,7 @@
    "-IModule",
    "-I/Applications/ArmGNUToolchain/13.3.Rel1/arm-none-eabi/arm-none-eabi/include",
    "-I/usr/arm-none-eabi/include",
+   "-I/usr/lib/arm-none-eabi/include/",
    "-Og",
    "-Wall",
    "-fdata-sections",
@@ -735,7 +756,7 @@
   "file": "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim.c"
  },
  {
-  "directory": "/Users/zhang/Projects/ADS1256",
+  "directory": "/home/xinjie/Project/ADS1256",
   "arguments": [
    "arm-none-eabi-gcc",
    "-c",
@@ -753,6 +774,7 @@
    "-IModule",
    "-I/Applications/ArmGNUToolchain/13.3.Rel1/arm-none-eabi/arm-none-eabi/include",
    "-I/usr/arm-none-eabi/include",
+   "-I/usr/lib/arm-none-eabi/include/",
    "-Og",
    "-Wall",
    "-fdata-sections",
@@ -770,7 +792,7 @@
   "file": "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim_ex.c"
  },
  {
-  "directory": "/Users/zhang/Projects/ADS1256",
+  "directory": "/home/xinjie/Project/ADS1256",
   "arguments": [
    "arm-none-eabi-gcc",
    "-c",
@@ -788,6 +810,7 @@
    "-IModule",
    "-I/Applications/ArmGNUToolchain/13.3.Rel1/arm-none-eabi/arm-none-eabi/include",
    "-I/usr/arm-none-eabi/include",
+   "-I/usr/lib/arm-none-eabi/include/",
    "-Og",
    "-Wall",
    "-fdata-sections",
@@ -805,7 +828,7 @@
   "file": "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.c"
  },
  {
-  "directory": "/Users/zhang/Projects/ADS1256",
+  "directory": "/home/xinjie/Project/ADS1256",
   "arguments": [
    "arm-none-eabi-gcc",
    "-c",
@@ -823,6 +846,7 @@
    "-IModule",
    "-I/Applications/ArmGNUToolchain/13.3.Rel1/arm-none-eabi/arm-none-eabi/include",
    "-I/usr/arm-none-eabi/include",
+   "-I/usr/lib/arm-none-eabi/include/",
    "-Og",
    "-Wall",
    "-fdata-sections",
@@ -840,7 +864,7 @@
   "file": "Core/Src/system_stm32f4xx.c"
  },
  {
-  "directory": "/Users/zhang/Projects/ADS1256",
+  "directory": "/home/xinjie/Project/ADS1256",
   "arguments": [
    "arm-none-eabi-gcc",
    "-c",
@@ -858,6 +882,7 @@
    "-IModule",
    "-I/Applications/ArmGNUToolchain/13.3.Rel1/arm-none-eabi/arm-none-eabi/include",
    "-I/usr/arm-none-eabi/include",
+   "-I/usr/lib/arm-none-eabi/include/",
    "-Og",
    "-Wall",
    "-fdata-sections",
@@ -875,7 +900,7 @@
   "file": "Module/ads1256.c"
  },
  {
-  "directory": "/Users/zhang/Projects/ADS1256",
+  "directory": "/home/xinjie/Project/ADS1256",
   "arguments": [
    "arm-none-eabi-gcc",
    "-x",
@@ -895,6 +920,7 @@
    "-IModule",
    "-I/Applications/ArmGNUToolchain/13.3.Rel1/arm-none-eabi/arm-none-eabi/include",
    "-I/usr/arm-none-eabi/include",
+   "-I/usr/lib/arm-none-eabi/include/",
    "-Og",
    "-Wall",
    "-fdata-sections",

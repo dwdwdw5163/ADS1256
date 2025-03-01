@@ -58,13 +58,14 @@ void ADS1256WREG(uint8_t regaddr,uint8_t databyte)
 //初始化ADS1256
 void ADS1256_Init(void)
 {
-	// //*************自校准****************
-  // while(ADS1256_DRDY);
-	// CS_0();
-	// SPI_WriteByte(ADS1256_CMD_SELFCAL);
-	// while(ADS1256_DRDY);
-	// CS_1();
-	// //**********************************
+	CS_1();
+	//*************自校准****************
+  while(ADS1256_DRDY);
+	CS_0();
+	SPI_WriteByte(ADS1256_CMD_SELFCAL);
+	while(ADS1256_DRDY);
+	CS_1();
+	//**********************************
 
 	ADS1256WREG(ADS1256_STATUS,0x06);               // 高位在前、使用缓冲
 //	ADS1256WREG(ADS1256_STATUS,0x04);               // 高位在前、不使用缓冲

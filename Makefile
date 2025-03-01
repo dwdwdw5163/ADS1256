@@ -130,8 +130,8 @@ C_INCLUDES =  \
 C_INCLUDES += \
 -IModule \
 -I/Applications/ArmGNUToolchain/13.3.Rel1/arm-none-eabi/arm-none-eabi/include \
--I/usr/arm-none-eabi/include
-
+-I/usr/arm-none-eabi/include \
+-I/usr/lib/arm-none-eabi/include/
 
 # compile gcc flags
 ASFLAGS = $(MCU) $(AS_DEFS) $(AS_INCLUDES) $(OPT) -Wall -fdata-sections -ffunction-sections

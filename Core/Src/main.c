@@ -29,6 +29,7 @@
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include "ads1256.h"
+#include <stdint.h>
 #include <stdio.h>
 /* USER CODE END Includes */
 
@@ -98,15 +99,19 @@ int main(void)
   MX_SPI1_Init();
   MX_USART1_UART_Init();
   /* USER CODE BEGIN 2 */
-  ADS1256_Init();
+  // ADS1256_Init();
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
-  while (1)
-  {
-  HAL_Delay(1000);
-  printf("Hello World\n");
+  printf("Initialized\r\n");
+  int32_t Adc=0;
+  float Volts;
+  while (1) {
+    HAL_Delay(1000);
+    // Adc = ADS1256ReadData((0 << 4) | ADS1256_MUXN_AINCOM);
+  	Volts = Adc*0.000000598;
+    printf("ADC: %.4f", Volts);
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
