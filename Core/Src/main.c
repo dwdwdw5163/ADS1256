@@ -19,11 +19,6 @@
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
 #include "spi.h"
-#include "stm32f407xx.h"
-#include "stm32f4xx_hal.h"
-#include "stm32f4xx_hal_cortex.h"
-#include "stm32f4xx_hal_def.h"
-#include "stm32f4xx_hal_dma_ex.h"
 #include "usart.h"
 #include "gpio.h"
 
@@ -41,7 +36,7 @@
 
 /* Private define ------------------------------------------------------------*/
 /* USER CODE BEGIN PD */
-
+#define NUM_CHANNELS 8
 /* USER CODE END PD */
 
 /* Private macro -------------------------------------------------------------*/
@@ -53,6 +48,9 @@
 
 /* USER CODE BEGIN PV */
 
+int32_t adc_values[NUM_CHANNELS];
+float voltage_values[NUM_CHANNELS];
+ADS1256_HandleTypeDef hads1256;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -73,15 +71,16 @@ int _write(int file, char *ptr, int len) {
   * @brief  The application entry point.
   * @retval int
   */
-int main(void)
-{
+int main(void) {
+
   /* USER CODE BEGIN 1 */
 
   /* USER CODE END 1 */
 
   /* MCU Configuration--------------------------------------------------------*/
 
-  /* Reset of all peripherals, Initializes the Flash interface and the Systick. */
+  /* Reset of all peripherals, Initializes the Flash interface and the Systick.
+   */
   HAL_Init();
 
   /* USER CODE BEGIN Init */
@@ -100,20 +99,37 @@ int main(void)
   MX_SPI1_Init();
   MX_USART1_UART_Init();
   /* USER CODE BEGIN 2 */
-  ADS1256_Init();
+  /* Initialize ADS1256 */
+  if (ADS1256_Init(&hads1256, &hspi1, SPI1_NSS_GPIO_Port, SPI1_NSS_Pin,
+                   DRDY_GPIO_Port, DRDY_Pin, 0, 0) != HAL_OK) {
+    Error_Handler();
+  }
+
+  /* Define voltage reference for conversion calculations */
+  const float vref = 2.5f; /* Assuming 2.5V reference voltage */
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
-  printf("Initialized\r\n");
-  int32_t Adc=0;
-  float Volts;
   while (1) {
+    /* Read all single-ended channels */
+    for (uint8_t i = 0; i < NUM_CHANNELS; i++) {
+      if (ADS1256_ReadChannel(&hads1256, i, &adc_values[i]) != HAL_OK) {
+        Error_Handler();
+      }
+
+      /* Convert to voltage (24-bit ADC, range is +/- VREF) */
+      /* ADS1256 has 24-bit resolution (2^23 - 1 for full scale) */
+      voltage_values[i] = (float)adc_values[i] * vref / 8388607.0f;
+
+      /* Small delay between channel readings */
+      HAL_Delay(10);
+      printf("voltage: %f\r\n", voltage_values[i]);
+    }
+
+    /* Process data here or transmit via UART, etc. */
+    /* For this example, we'll just wait before taking more readings */
     HAL_Delay(1000);
-    Adc = ADS1256ReadData((ADS1256_MUXN_AIN0 << 4) | ADS1256_MUXN_AINCOM);
-  	Volts = Adc*0.000000598;
-    printf("ADC: %d\r\n", Adc);
-    printf("Test\r\n");
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
