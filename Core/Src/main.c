@@ -107,6 +107,7 @@ int main(void) {
 
   /* Define voltage reference for conversion calculations */
   const float vref = 2.5f; /* Assuming 2.5V reference voltage */
+  printf("Init\r\n");
   /* USER CODE END 2 */
 
   /* Infinite loop */

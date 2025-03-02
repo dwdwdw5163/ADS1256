@@ -40,19 +40,19 @@ HAL_StatusTypeDef ADS1256_Init(ADS1256_HandleTypeDef* hadc, SPI_HandleTypeDef* h
     
     /* Default settings */
     hadc->gain = ADS1256_GAIN_1;
-    hadc->data_rate = ADS1256_DRATE_30000SPS;
+    hadc->data_rate = ADS1256_DRATE_10SPS;
     hadc->buffer_enabled = 0;
     
     /* Set CS high initially */
     ADS1256_CS_High(hadc);
     
-    /* Optional hardware reset */
-    if (hadc->RESET_PORT != NULL) {
-        HAL_GPIO_WritePin(hadc->RESET_PORT, hadc->RESET_PIN, GPIO_PIN_RESET);
-        HAL_Delay(10);
-        HAL_GPIO_WritePin(hadc->RESET_PORT, hadc->RESET_PIN, GPIO_PIN_SET);
-        HAL_Delay(10);
-    }
+    // /* Optional hardware reset */
+    // if (hadc->RESET_PORT != NULL) {
+    //     HAL_GPIO_WritePin(hadc->RESET_PORT, hadc->RESET_PIN, GPIO_PIN_RESET);
+    //     HAL_Delay(10);
+    //     HAL_GPIO_WritePin(hadc->RESET_PORT, hadc->RESET_PIN, GPIO_PIN_SET);
+    //     HAL_Delay(10);
+    // }
     
     /* Software reset */
     status = ADS1256_Reset(hadc);
@@ -79,6 +79,9 @@ HAL_StatusTypeDef ADS1256_Init(ADS1256_HandleTypeDef* hadc, SPI_HandleTypeDef* h
     /* Perform self-calibration */
     status = ADS1256_SelfCal(hadc);
     if (status != HAL_OK) return status;
+    
+    ADS1256_SendCommand(hadc, ADS1256_CMD_SYNC);
+    ADS1256_SendCommand(hadc, ADS1256_CMD_WAKEUP);
     
     return HAL_OK;
 }
@@ -260,6 +263,8 @@ int32_t ADS1256_ReadData(ADS1256_HandleTypeDef* hadc)
     uint8_t buffer[3];
     
     /* Send RDATA command */
+    // ADS1256_SendCommand(hadc, ADS1256_CMD_SYNC);
+    // ADS1256_SendCommand(hadc, ADS1256_CMD_WAKEUP);
     ADS1256_SendCommand(hadc, ADS1256_CMD_RDATA);
     
     /* Wait for t6 delay (50*tCLKIN) */
