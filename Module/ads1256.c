@@ -82,7 +82,7 @@ HAL_StatusTypeDef ADS1256_Init(ADS1256_HandleTypeDef* hadc, SPI_HandleTypeDef* h
     
     /* Default settings */
     hadc->gain = ADS1256_GAIN_1;
-    hadc->data_rate = ADS1256_DRATE_10SPS;
+    hadc->data_rate = ADS1256_DRATE_5SPS;
     hadc->buffer_enabled = 0;
     
     /* Set CS high initially */

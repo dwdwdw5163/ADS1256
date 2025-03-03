@@ -136,7 +136,7 @@ int main(void) {
     printf("voltage: %f\r\n", voltage);
     /* Process data here or transmit via UART, etc. */
     /* For this example, we'll just wait before taking more readings */
-    HAL_Delay(100);
+    HAL_Delay(200);
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
