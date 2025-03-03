@@ -122,7 +122,7 @@ HAL_StatusTypeDef ADS1256_Init(ADS1256_HandleTypeDef* hadc, SPI_HandleTypeDef* h
     status = ADS1256_SelfCal(hadc);
     if (status != HAL_OK) return status;
     while(ADS1256_IsDRDY(hadc));
-    ADS1256_SetChannel(hadc, ADS1256_MUXP_AIN0, ADS1256_MUXN_AINCOM);
+    ADS1256_SetChannel(hadc, ADS1256_MUXP_AIN0, ADS1256_MUXN_AIN1);
     ADS1256_SelfCal(hadc);
     while(ADS1256_IsDRDY(hadc));
     ADS1256_SendCommand(hadc, ADS1256_CMD_SYNC);
