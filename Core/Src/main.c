@@ -107,6 +107,7 @@ int main(void) {
 
   /* Define voltage reference for conversion calculations */
   const float vref = 2.5f; /* Assuming 2.5V reference voltage */
+  static int32_t adc_data = 0;
   printf("Init\r\n");
   /* USER CODE END 2 */
 
@@ -114,23 +115,28 @@ int main(void) {
   /* USER CODE BEGIN WHILE */
   while (1) {
     /* Read all single-ended channels */
-    for (uint8_t i = 0; i < NUM_CHANNELS; i++) {
-      if (ADS1256_ReadChannel(&hads1256, i, &adc_values[i]) != HAL_OK) {
-        Error_Handler();
-      }
+    // for (uint8_t i = 0; i < NUM_CHANNELS; i++) {
+    //   // if (ADS1256_ReadChannel(&hads1256, i, &adc_values[i]) != HAL_OK) {
+    //   //   Error_Handler();
+    //   // }
 
-      /* Convert to voltage (24-bit ADC, range is +/- VREF) */
-      /* ADS1256 has 24-bit resolution (2^23 - 1 for full scale) */
-      voltage_values[i] = (float)adc_values[i] * vref / 8388607.0f;
+    //   adc_values[i] = ADS1256_ReadData(&hads1256);
+      
+    //   /* Convert to voltage (24-bit ADC, range is +/- VREF) */
+    //   /* ADS1256 has 24-bit resolution (2^23 - 1 for full scale) */
+    //   voltage_values[i] = (float)adc_values[i] * vref / 8388607.0f;
 
-      /* Small delay between channel readings */
-      HAL_Delay(10);
-      printf("voltage: %f\r\n", voltage_values[i]);
-    }
+    //   /* Small delay between channel readings */
+    //   HAL_Delay(100);
+    //   printf("voltage: %f\r\n", voltage_values[i]);
+    // }
 
+    adc_data = ADS1256_ReadData(&hads1256);
+    float voltage = (float)adc_data * vref / 8388607.0f;
+    printf("voltage: %f\r\n", voltage);
     /* Process data here or transmit via UART, etc. */
     /* For this example, we'll just wait before taking more readings */
-    HAL_Delay(1000);
+    HAL_Delay(100);
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */

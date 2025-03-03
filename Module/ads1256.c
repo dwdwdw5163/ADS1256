@@ -4,11 +4,53 @@
  */
 
 #include "ads1256.h"
+#include "stm32f4xx_hal_spi.h"
+#include <stdint.h>
 
 /* Private function prototypes */
 static void ADS1256_CS_Low(ADS1256_HandleTypeDef* hadc);
 static void ADS1256_CS_High(ADS1256_HandleTypeDef* hadc);
 static uint8_t ADS1256_IsDRDY(ADS1256_HandleTypeDef* hadc);
+
+void delay_us(uint32_t n)
+{
+    uint32_t ticks;
+    uint32_t told;
+    uint32_t tnow;
+    uint32_t tcnt = 0;
+    uint32_t reload;
+       
+	reload = SysTick->LOAD;                
+    ticks = n * (SystemCoreClock / 1000000);	 /* 需要的节拍数 */  
+    
+    tcnt = 0;
+    told = SysTick->VAL;             /* 刚进入时的计数器值 */
+ 
+    while (1)
+    {
+        tnow = SysTick->VAL;    
+        if (tnow != told)
+        {    
+            /* SYSTICK是一个递减的计数器 */    
+            if (tnow < told)
+            {
+                tcnt += told - tnow;    
+            }
+            /* 重新装载递减 */
+            else
+            {
+                tcnt += reload - tnow + told;    
+            }        
+            told = tnow;
+ 
+            /* 时间超过/等于要延迟的时间,则退出 */
+            if (tcnt >= ticks)
+            {
+            	break;
+            }
+        }  
+    }
+} 
 
 /**
  * @brief Initialize the ADS1256 ADC
@@ -79,7 +121,10 @@ HAL_StatusTypeDef ADS1256_Init(ADS1256_HandleTypeDef* hadc, SPI_HandleTypeDef* h
     /* Perform self-calibration */
     status = ADS1256_SelfCal(hadc);
     if (status != HAL_OK) return status;
-    
+    while(ADS1256_IsDRDY(hadc));
+    ADS1256_SetChannel(hadc, ADS1256_MUXP_AIN0, ADS1256_MUXN_AINCOM);
+    ADS1256_SelfCal(hadc);
+    while(ADS1256_IsDRDY(hadc));
     ADS1256_SendCommand(hadc, ADS1256_CMD_SYNC);
     ADS1256_SendCommand(hadc, ADS1256_CMD_WAKEUP);
     
@@ -261,18 +306,14 @@ int32_t ADS1256_ReadData(ADS1256_HandleTypeDef* hadc)
 {
     int32_t data = 0;
     uint8_t buffer[3];
-    
+    uint8_t tx_buf[3] = {0xff,0xff,0xff};
     /* Send RDATA command */
-    // ADS1256_SendCommand(hadc, ADS1256_CMD_SYNC);
-    // ADS1256_SendCommand(hadc, ADS1256_CMD_WAKEUP);
-    ADS1256_SendCommand(hadc, ADS1256_CMD_RDATA);
-    
-    /* Wait for t6 delay (50*tCLKIN) */
-    HAL_Delay(1);
-    
-    /* Read 3 bytes of data */
     ADS1256_CS_Low(hadc);
-    HAL_SPI_Receive(hadc->hspi, buffer, 3, 100);
+    while(ADS1256_IsDRDY(hadc));
+    buffer[0]=ADS1256_CMD_RDATA;
+    HAL_SPI_Transmit(hadc->hspi, buffer, 1, 100);    
+    delay_us(7);
+    HAL_SPI_TransmitReceive(hadc->hspi, tx_buf, buffer, 3, 100);
     ADS1256_CS_High(hadc);
     
     /* Convert to 24-bit signed value */
@@ -358,6 +399,7 @@ HAL_StatusTypeDef ADS1256_WriteRegister(ADS1256_HandleTypeDef* hadc, uint8_t reg
     uint8_t buffer[3];
     HAL_StatusTypeDef status;
     
+    while(ADS1256_IsDRDY(hadc));
     /* Prepare command byte: 0101 rrrr where rrrr is the register address */
     buffer[0] = ADS1256_CMD_WREG | (reg & 0x0F);
     /* Number of registers to write - 1 */
@@ -367,6 +409,7 @@ HAL_StatusTypeDef ADS1256_WriteRegister(ADS1256_HandleTypeDef* hadc, uint8_t reg
     
     /* Send command and data */
     ADS1256_CS_Low(hadc);
+    delay_us(5);
     status = HAL_SPI_Transmit(hadc->hspi, buffer, 3, 100);
     ADS1256_CS_High(hadc);
     
@@ -387,6 +430,7 @@ uint8_t ADS1256_ReadRegister(ADS1256_HandleTypeDef* hadc, uint8_t reg)
     uint8_t cmd[2];
     uint8_t value;
     
+    while(ADS1256_IsDRDY(hadc));
     /* Prepare command byte: 0001 rrrr where rrrr is the register address */
     cmd[0] = ADS1256_CMD_RREG | (reg & 0x0F);
     /* Number of registers to read - 1 */
@@ -397,7 +441,7 @@ uint8_t ADS1256_ReadRegister(ADS1256_HandleTypeDef* hadc, uint8_t reg)
     HAL_SPI_Transmit(hadc->hspi, cmd, 2, 100);
     
     /* Wait for t6 delay (50*tCLKIN) */
-    HAL_Delay(1);
+    delay_us(5);
     
     /* Read register value */
     HAL_SPI_Receive(hadc->hspi, &value, 1, 100);
@@ -420,7 +464,9 @@ HAL_StatusTypeDef ADS1256_SendCommand(ADS1256_HandleTypeDef* hadc, uint8_t cmd)
     HAL_StatusTypeDef status;
     
     ADS1256_CS_Low(hadc);
+    delay_us(5);
     status = HAL_SPI_Transmit(hadc->hspi, &cmd, 1, 100);
+    delay_us(5);
     ADS1256_CS_High(hadc);
     
     /* Wait for the operation to complete (tSCCS) */
